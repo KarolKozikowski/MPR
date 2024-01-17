@@ -20,4 +20,7 @@ public class CreateStudent {
 
     @NotNull
     private Semester semester;
+
+    @NotNull
+    private  float czesne;
 }

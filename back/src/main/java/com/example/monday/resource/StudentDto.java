@@ -5,5 +5,5 @@ import com.example.monday.data.StudentUnit;
 
 import java.util.UUID;
 
-public record StudentDto(UUID id, String name, StudentUnit unit, Semester semester, Long index) {
+public record StudentDto(UUID id, String name, StudentUnit unit, Semester semester, float czesne, Long index) {
 }
