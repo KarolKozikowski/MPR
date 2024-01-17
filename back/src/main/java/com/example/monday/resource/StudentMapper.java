@@ -11,11 +11,12 @@ public class StudentMapper {
                 student.getId(),
                 student.getName(),
                 student.getUnit(),
+                student.getSemester(),
                 student.getIndex()
         );
     }
 
     public Student toEntity(CreateStudent createStudent) {
-        return new Student(createStudent.getName(), createStudent.getUnit());
+        return new Student(createStudent.getName(), createStudent.getUnit(), createStudent.getSemester());
     }
 }

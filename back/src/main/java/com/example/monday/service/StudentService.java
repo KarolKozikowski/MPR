@@ -52,13 +52,24 @@ public class StudentService {
         long maxIndex = studentRepository.getMaxIndex().orElse(0L);
         if(StudentUnit.GDANSK.equals(unit)) {
             return 5 + maxIndex;
-        } else {
+        }
+        else if(StudentUnit.WEJHEROWO.equals(unit)){
+            return 2 * maxIndex;
+        }
+        else {
             return 10 * maxIndex;
         }
     }
 
     public List<StudentDto> getStudentsByName(String name) {
         return studentRepository.getFromGdanskByName(name)
+                .stream()
+                .map(studentMapper::toDto)
+                .toList();
+    }
+
+    public List<StudentDto> getAllStudents() {
+        return studentRepository.findAll()
                 .stream()
                 .map(studentMapper::toDto)
                 .toList();

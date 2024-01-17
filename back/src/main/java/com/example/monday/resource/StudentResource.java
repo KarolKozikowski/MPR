@@ -48,9 +48,13 @@ public class StudentResource {
         studentService.deleteByName(name);
     }
 
-    @GetMapping
+    @GetMapping("/by-name")
     public List<StudentDto> getStudentsByName(@RequestParam String name) {
         return studentService.getStudentsByName(name);
+    }
+    @GetMapping
+    public List<StudentDto> getAllStudents(){
+        return studentService.getAllStudents();
     }
 
 }

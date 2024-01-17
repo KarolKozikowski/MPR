@@ -11,14 +11,15 @@ import java.util.UUID;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Student {
 
-    public Student(String name, StudentUnit unit) {
+    public Student(String name, StudentUnit unit, Semester semester) {
         this.name = name;
         this.unit = unit;
-
+        this.semester = semester;
     }
-    public Student(String name, StudentUnit unit, Long index) {
+    public Student(String name, StudentUnit unit, Semester semester, Long index) {
         this.name = name;
         this.unit = unit;
+        this.semester = semester;
         this.index = index;
     }
 
@@ -28,6 +29,8 @@ public class Student {
     private String name;
     @Enumerated(EnumType.STRING)
     private StudentUnit unit;
+    @Enumerated(EnumType.STRING)
+    private Semester semester;
     @Setter
     private Long index;
 
