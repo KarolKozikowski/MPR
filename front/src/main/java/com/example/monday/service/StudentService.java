@@ -1,12 +1,14 @@
 package com.example.monday.service;
 
+import com.example.monday.data.StudentRepository;
+import com.example.monday.data.StudentUnit;
+import com.example.monday.excetionhandler.InvalidStudentNameException;
 import com.example.monday.excetionhandler.RecordNotFoundException;
 import com.example.monday.resource.CreateStudent;
 import com.example.monday.resource.StudentDto;
+import com.example.monday.resource.StudentMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
@@ -28,6 +30,8 @@ public class StudentService {
     //definiujemy stałą z adresem endpointu aplikacji, do której wysyłamy zapytanie
     private static final String API_URL = "http://localhost:8080/students";
 
+    private final StudentRepository studentRepository;
+    private final StudentMapper studentMapper;
 
     //Synchroniczny "klient" webowy - dzięki tej klasie możemy wywołać synchroniczne zapytanie restowe do zewnętrznej aplikacji
     private final RestTemplate restTemplate = new RestTemplate();
@@ -66,37 +70,25 @@ public class StudentService {
             throw new RuntimeException();
         }
     }
-    public static long licznik = 0;
-    private Long createIndex(long licznik) {
-        return licznik + 1;
-    }
-
 
     //do zrobienia dla was
-//    public void deleteByName(String name){
-//        var studentsByName = studentRepository.getAllByName(name);
-//        if(studentsByName.isEmpty()) {
-//            throw new InvalidStudentNameException("Student with name=" + name + " not exists.");
-//        }
-//        studentRepository.deleteAll(studentsByName);
-//    }
-//
-//    private Long createIndex(StudentUnit unit) {
-//        long maxIndex = studentRepository.getMaxIndex().orElse(0L);
-//        if(StudentUnit.GDANSK.equals(unit)) {
-//            return 5 + maxIndex;
-//        } else {
-//            return 10 * maxIndex;
-//        }
-//    }
-    public void deleteByName(String name){ restTemplate.delete(API_URL + "?name=" + name); }
-    public List<StudentDto> findAll() {
-        try{
-            return restTemplate.exchange(API_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<StudentDto>>(){})
-                    .getBody();
+    public void deleteByName(String name){
+        var studentsByName = studentRepository.getAllByName(name);
+        if(studentsByName.isEmpty()) {
+            throw new InvalidStudentNameException("Student with name=" + name + " not exists.");
         }
-        catch (HttpServerErrorException e){ throw new RuntimeException("Error during sending request"); }
+        studentRepository.deleteAll(studentsByName);
     }
+
+    private Long createIndex(StudentUnit unit) {
+        long maxIndex = studentRepository.getMaxIndex().orElse(0L);
+        if(StudentUnit.GDANSK.equals(unit)) {
+            return 5 + maxIndex;
+        } else {
+            return 10 * maxIndex;
+        }
+    }
+
     public List<StudentDto> getStudentsByName(String name) {
         //obsługa błędów w przypadku restTemplate i webClient jest taka sama - łapiemy te same wyjątki
         try {
