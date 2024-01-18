@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+:root{
+    --main_blue: #7487AC;
+    --main_blue_light: #96AACD;
+    --light_blue: #A6C6E3;
+    --greenish: #556C75;
+    --thevoid: #1C1E27;
+}
+
+.title{
+    background: var(--main_blue_light);
+    text-align: center;
+    padding-top: 20px;
+}

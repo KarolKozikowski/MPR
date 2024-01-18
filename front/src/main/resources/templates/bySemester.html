@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search students by semester</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<form method="POST" th:action="@{/students-page/bySemester}">
+    <label>
+        Semester
+        <select id="Semester-input" name="semester">
+            <option th:each="SemesterEnum : ${T(com.example.monday.resource.Semester).values()}"
+                    th:value="${SemesterEnum}" th:text="${SemesterEnum}">
+            </option>
+        </select>
+    </label><hr>
+    <button type="submit">Search</button>
+</form>
+<hr>
+<table>
+    <thead>
+    <tr>
+        <th>Index</th>
+        <th>Name</th>
+        <th>Municipality</th>
+        <th>Czesne</th>
+        <th>Semester</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${bySemesterPost}">
+        <td th:text="${student.index}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.unit}"></td>
+        <td th:text="${student.czesne}"></td>
+        <td th:text="${student.semester}"></td>
+    </tr>
+    </tbody>
+</table><hr>
+<a th:href="@{/students-page}">return</a>
+</body>
+</html>

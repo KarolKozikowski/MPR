@@ -4,10 +4,9 @@ import com.example.monday.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 
 @Controller //Użycie tej adnotacji definiuje Springowego beana, od @RestController, którego używaliśmy do tej pory różni się tym,
@@ -27,8 +26,9 @@ public class StudentPageController {
         return "index"; //z metod zawsze zwracamy Stringa i jako wartość wstawiamy nazwę szablonu thymeleafowego (pliku html)
     }
 
-    @GetMapping("/edit")
-    public String editStudent(){
+    @GetMapping("/edit/{studentId}")
+    public String editStudent(Model model, @PathVariable UUID studentId){
+        model.addAttribute("student");
         return "editStudent";
     }
 
@@ -49,5 +49,17 @@ public class StudentPageController {
         return "redirect:/students-page";//jako, że nie wchodzimy to bezpośrednio na stronę, a akcja dzieje się po kliknięciu przycisku
         //do nazwy szablonu musimy dodać 'redirect:{ścieżka do strony}' aby zostać przeniesionym po kliknięciu przycisku na inną stronę
         //robimy to tylko w przypadku gdy jest to przeniesienie na podstawie akcji użytkownika, jeśli udostępniamy stronę na podstawie adresu w przeglądarce podajemy tylko nazwę szablonu
+    }
+
+    @GetMapping("/bySemester")
+    public String getStudentBySemester (Model model){
+        model.addAttribute("bySemesterGet", new SemesterDto());
+        return "bySemester";
+    }
+    @PostMapping("/bySemester")
+    public String getStudentBySemesterPost(Model model, @ModelAttribute StudentDto studentDto){
+        var filteredStudents = studentService.getStudentsBySemester(studentDto.semester());
+        model.addAttribute("bySemesterPost", filteredStudents);
+        return "bySemester";
     }
 }

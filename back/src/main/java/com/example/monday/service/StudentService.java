@@ -1,5 +1,6 @@
 package com.example.monday.service;
 
+import com.example.monday.data.Semester;
 import com.example.monday.data.Student;
 import com.example.monday.data.StudentRepository;
 import com.example.monday.data.StudentUnit;
@@ -73,5 +74,9 @@ public class StudentService {
                 .stream()
                 .map(studentMapper::toDto)
                 .toList();
+    }
+
+    public List<StudentDto> getStudentsBySemester(Semester semester){
+        return studentRepository.getStudentsBySemester(semester).stream().map(studentMapper::toDto).toList();
     }
 }

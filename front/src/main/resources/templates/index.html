@@ -25,13 +25,14 @@ dzięki temu zapisowi powstanie wiersz dla każdego studenta z kolumnami zdefini
         <td th:text="${student.czesne}"></td>
         <td th:text="${student.semester}"></td>
         <td th:text="${student.index}"></td>
-        <td><a th:href="@{/students-page/edit}"><button type="button">edit</button></a></td>
+        <td><a th:href="@{/students-page/edit/{studentId} (studentId=${student.id})}"><button type="button">edit</button></a></td>
     </tr>
     </tbody>
 </table>
 <!--kolejne zastosowanie th:href - tym razem jest to odwołanie do adresu w naszej aplikacji.
 o przeniesienie nas na nowy adres zadba znacznik <a>, a zwrócenie odpowiedniego pliku html będzie obsłużone przez kontroler-->
-<a th:href="@{/students-page/add}">add new student</a>
+<a th:href="@{/students-page/add}">add new student</a><br>
+<a th:href="@{/students-page/bySemester}">search students by semester</a><br>
 </body>
 <footer th:insert="footer.html"></footer>
 </html>

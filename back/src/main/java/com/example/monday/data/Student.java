@@ -1,6 +1,7 @@
 package com.example.monday.data;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.UUID;
@@ -11,13 +12,13 @@ import java.util.UUID;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Student {
 
-    public Student(String name, StudentUnit unit, Semester semester, float czesne) {
+    public Student(String name, StudentUnit unit, Semester semester, Long czesne) {
         this.name = name;
         this.unit = unit;
         this.semester = semester;
         this.czesne = czesne;
     }
-    public Student(String name, StudentUnit unit, Semester semester, float czesne, Long index) {
+    public Student(String name, StudentUnit unit, Semester semester, Long czesne, Long index) {
         this.name = name;
         this.unit = unit;
         this.semester = semester;
@@ -29,7 +30,7 @@ public class Student {
     @GeneratedValue
     private UUID id;
     private String name;
-    private float czesne;
+    private Long czesne;
     @Enumerated(EnumType.STRING)
     private StudentUnit unit;
     @Enumerated(EnumType.STRING)

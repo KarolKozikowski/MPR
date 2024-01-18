@@ -1,6 +1,7 @@
 package com.example.monday.service;
 
 import com.example.monday.excetionhandler.RecordNotFoundException;
+import com.example.monday.resource.Semester;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.core.ParameterizedTypeReference;
@@ -50,8 +51,8 @@ public class StudentService {
                 .bodyValue(createStudent)
 //                .body(Mono.just(createStudent), CreateStudent.class)
                 .retrieve()
-                .toBodilessEntity()
-                .subscribe(entity ->log.info("Received status " + entity.getStatusCode()));
+                .toBodilessEntity().block();
+                //.subscribe(entity ->log.info("Received status " + entity.getStatusCode()));
     }
 
     public StudentDto getStudentById(UUID id) {
@@ -110,6 +111,18 @@ public class StudentService {
 
             return response.getBody();
 
+        } catch (HttpClientErrorException e) {
+            throw new RecordNotFoundException("Just to check error handling");
+        } catch (HttpServerErrorException e) {
+            throw new RuntimeException();
+        }
+    }
+    public List<StudentDto> getStudentsBySemester(Semester semester) {
+        try {
+            return restTemplate.exchange(API_URL + "/bySemester?semester=" + semester,
+                            HttpMethod.GET, null, new ParameterizedTypeReference<List<StudentDto>>() {
+                            })
+                    .getBody();
         } catch (HttpClientErrorException e) {
             throw new RecordNotFoundException("Just to check error handling");
         } catch (HttpServerErrorException e) {
