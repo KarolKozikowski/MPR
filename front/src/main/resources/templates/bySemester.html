@@ -8,7 +8,7 @@
 <body>
 <form method="POST" th:action="@{/students-page/bySemester}">
     <label>
-        Semester
+        Semester:
         <select id="Semester-input" name="semester">
             <option th:each="SemesterEnum : ${T(com.example.monday.resource.Semester).values()}"
                     th:value="${SemesterEnum}" th:text="${SemesterEnum}">

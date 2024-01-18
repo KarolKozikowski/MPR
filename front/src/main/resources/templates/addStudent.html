@@ -11,16 +11,16 @@
  nazwa obiektu w znaczniku th:object musi odpowiadać tej dodanej do modelu w kontrolerze-->
 <form method="POST" th:action="@{/students-page}" th:object="${student}">
     <label>
-        Name
+        Name:
 <!--        znacznik th:field pozwala nam pobrać wartość z tego inputu do pola name, zapis *{} jest odniesieniem do obiektu studenta zdefiniowanego w formularzu przez th:object-->
         <input id="name-input" th:field="*{name}"/>
     </label>
     <label>
-        Czesne
-        <input id="czesne-input" type="number" th:field="*{czesne}"/>
+        Czesne:
+        <input id="czesne-input" type="number" required th:field="*{czesne}"/>
     </label>
     <label>
-        Unit
+        Unit:
         <select id="unit-input" name="unit" th:field="*{unit}">
 <!--            w znaczniku th:each pojawia się SpeL(Spring expression language), który pozwala nam odwołać się do klasy w naszym projekcie i wywołać na niej metodę values()-->
             <option th:each="studentUnit : ${T(com.example.monday.resource.StudentUnit).values()}"
@@ -32,7 +32,7 @@
         </select>
     </label>
     <label>
-        Semester
+        Semester:
         <select id="semester-input" name="semester" th:field="*{semester}">
             <option th:each="semester : ${T(com.example.monday.resource.Semester).values()}"
                     th:value="${semester}" th:text="${semester}">

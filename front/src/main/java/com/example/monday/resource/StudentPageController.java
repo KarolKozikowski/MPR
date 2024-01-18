@@ -58,8 +58,8 @@ public class StudentPageController {
     }
     @PostMapping("/bySemester")
     public String getStudentBySemesterPost(Model model, @ModelAttribute StudentDto studentDto){
-        var filteredStudents = studentService.getStudentsBySemester(studentDto.semester());
-        model.addAttribute("bySemesterPost", filteredStudents);
+        var Students = studentService.getStudentsBySemester(studentDto.semester());
+        model.addAttribute("bySemesterPost", Students);
         return "bySemester";
     }
 
@@ -70,8 +70,8 @@ public class StudentPageController {
     }
     @PostMapping("/byCzesne")
     public String getStudentByCzesnePost(Model model, @ModelAttribute StudentDto studentDto){
-        var filteredStudents = studentService.getStudentsByCzesne(studentDto.czesne());
-        model.addAttribute("byCzesnePost", filteredStudents);
+        var Students = studentService.getStudentsByCzesne(studentDto.czesne());
+        model.addAttribute("byCzesnePost", Students);
         return "byCzesne";
     }
 }
