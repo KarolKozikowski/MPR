@@ -27,6 +27,12 @@ public class StudentPageController {
         return "index"; //z metod zawsze zwracamy Stringa i jako wartość wstawiamy nazwę szablonu thymeleafowego (pliku html)
     }
 
+    @GetMapping("/edit")
+    public String editStudent(){
+        return "editStudent";
+    }
+
+
     @GetMapping("/add") // ustawiamy ścieżkę, do zwrócenia stron zawsze używamy metody GET, jest to standardowa metoda
     //jakiej używają przeglądarki do pobrania strony
     public String displayAddStudentPage(Model model) {

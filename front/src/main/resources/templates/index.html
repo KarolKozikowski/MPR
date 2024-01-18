@@ -25,6 +25,7 @@ dzięki temu zapisowi powstanie wiersz dla każdego studenta z kolumnami zdefini
         <td th:text="${student.czesne}"></td>
         <td th:text="${student.semester}"></td>
         <td th:text="${student.index}"></td>
+        <td><a th:href="@{/students-page/edit}"><button type="button">edit</button></a></td>
     </tr>
     </tbody>
 </table>
