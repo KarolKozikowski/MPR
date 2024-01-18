@@ -26,6 +26,8 @@ public interface StudentRepository extends CrudRepository<Student, UUID> {
     List<Student> getAllByName(String name);
 
     List<Student> getStudentsBySemester (Semester semester);
+
+    List<Student> getStudentsByCzesne (Long czesne);
     default List<Student> getFromGdanskByName(String name) {
         return getByNameAndUnit(name, StudentUnit.GDANSK);
     }

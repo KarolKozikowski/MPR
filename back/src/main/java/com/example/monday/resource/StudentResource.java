@@ -62,4 +62,8 @@ public class StudentResource {
     public List<StudentDto> getStudentsBySemester (@RequestParam Semester semester){
         return studentService.getStudentsBySemester(semester);
     }
+    @GetMapping("/byCzesne")
+    public List<StudentDto> getStudentsByCzesne (@RequestParam Long czesne){
+        return studentService.getStudentsByCzesne(czesne);
+    }
 }

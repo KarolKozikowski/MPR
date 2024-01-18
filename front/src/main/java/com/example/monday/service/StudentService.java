@@ -129,5 +129,17 @@ public class StudentService {
             throw new RuntimeException();
         }
     }
+    public List<StudentDto> getStudentsByCzesne(Long czesne) {
+        try {
+            return restTemplate.exchange(API_URL + "/byCzesne?czesne=" + czesne,
+                            HttpMethod.GET, null, new ParameterizedTypeReference<List<StudentDto>>() {
+                            })
+                    .getBody();
+        } catch (HttpClientErrorException e) {
+            throw new RecordNotFoundException("Just to check error handling");
+        } catch (HttpServerErrorException e) {
+            throw new RuntimeException();
+        }
+    }
 }
 

@@ -79,4 +79,7 @@ public class StudentService {
     public List<StudentDto> getStudentsBySemester(Semester semester){
         return studentRepository.getStudentsBySemester(semester).stream().map(studentMapper::toDto).toList();
     }
+    public List<StudentDto> getStudentsByCzesne(Long czesne){
+        return studentRepository.getStudentsByCzesne(czesne).stream().map(studentMapper::toDto).toList();
+    }
 }
