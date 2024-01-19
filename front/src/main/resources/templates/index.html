@@ -13,13 +13,17 @@ jaki zostanie zwrócony do klienta/użytkownika -->
 <div class="title">
     <h2>List of students</h2>
 </div>
+<div class="main">
 <table>
-    <tbody>
-<!--    konstrukcja forEach w thymeleaf realizowana jest przez znacznik th:each, a dalej zapis wygląda jak w forEach w javie
-dzięki temu zapisowi powstanie wiersz dla każdego studenta z kolumnami zdefiniowanymi poniżej-->
+    <tr>
+        <th>Name</th>
+        <th>Municipality</th>
+        <th>Czesne</th>
+        <th>Semester</th>
+        <th>Index</th>
+        <th>Action</th>
+    </tr>
     <tr th:each="student : ${students}">
-<!--        możemy teraz odwoływać się do wartości przechowywanych w obiekcie student i wyświetlić je na froncie-->
-
         <td th:text="${student.name}"></td>
         <td th:text="${student.unit}"></td>
         <td th:text="${student.czesne}"></td>
@@ -27,13 +31,11 @@ dzięki temu zapisowi powstanie wiersz dla każdego studenta z kolumnami zdefini
         <td th:text="${student.index}"></td>
         <td><a th:href="@{/students-page/edit/{studentId} (studentId=${student.id})}"><button type="button">edit</button></a></td>
     </tr>
-    </tbody>
 </table>
-<!--kolejne zastosowanie th:href - tym razem jest to odwołanie do adresu w naszej aplikacji.
-o przeniesienie nas na nowy adres zadba znacznik <a>, a zwrócenie odpowiedniego pliku html będzie obsłużone przez kontroler-->
-<a th:href="@{/students-page/add}">add new student</a><br>
-<a th:href="@{/students-page/bySemester}">search students by semester</a><br>
-<a th:href="@{/students-page/byCzesne}">search students by czesne</a><br>
+<a th:href="@{/students-page/add}" class="add">+</a><br>
+<a th:href="@{/students-page/bySemester}" class="button">search students by semester</a><br>
+<a th:href="@{/students-page/byCzesne}" class="button2">search students by czesne</a><br>
+</div>
 </body>
 <footer th:insert="footer.html"></footer>
 </html>
