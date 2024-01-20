@@ -54,6 +54,12 @@ public class StudentService {
                 .toBodilessEntity().block();
                 //.subscribe(entity ->log.info("Received status " + entity.getStatusCode()));
     }
+    public void updateStudent(StudentDto studentDto){
+        webClient.post()
+                .bodyValue(studentDto)
+                .retrieve()
+                .toBodilessEntity().block();
+    }
 
     public StudentDto getStudentById(UUID id) {
         //wykonujemy tu synchroniczne zapytanie do pobrania studenta

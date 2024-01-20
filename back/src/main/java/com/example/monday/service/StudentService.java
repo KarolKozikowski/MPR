@@ -27,12 +27,17 @@ public class StudentService {
     private final StudentMapper studentMapper;
 
 
-    public Student saveStudent(CreateStudent createStudent) {
+    public void saveStudent(CreateStudent createStudent) {
         var toSave = studentMapper.toEntity(createStudent);
         var index = createIndex(createStudent.getUnit());
         toSave.setIndex(index);
         studentRepository.save(toSave);
-        return toSave;
+
+    }
+    public void updateStudent(StudentDto studentDto){
+        Student student = new Student(studentDto.name(), studentDto.unit(), studentDto.semester(), studentDto.czesne(), studentDto.index());
+        student.setIndex(student.getIndex());
+        studentRepository.save(student);
     }
 
     public StudentDto getStudentById(UUID id) {

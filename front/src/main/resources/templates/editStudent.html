@@ -6,6 +6,33 @@
 </head>
 <body>
 <h2>Edit student: </h2>
-<form method="POST" th:action="@{/students-page}" th:object="${student}"></form>
+
+<form method="POST" th:action="@{updateStudent}" th:object="${student}">
+    <label>
+        Name:
+        <input id="name-input" th:field="*{name}"/>
+    </label>
+    <label>
+        Czesne:
+        <input id="czesne-input" type="number" required th:field="*{czesne}"/>
+    </label>
+    <label>
+        Unit:
+        <select id="unit-input" name="unit" th:field="*{unit}">
+            <option th:each="studentUnit : ${T(com.example.monday.resource.StudentUnit).values()}"
+                    th:value="${studentUnit}" th:text="${studentUnit}">
+            </option>
+        </select>
+    </label>
+    <label>
+        Semester:
+        <select id="semester-input" name="semester" th:field="*{semester}">
+            <option th:each="semester : ${T(com.example.monday.resource.Semester).values()}"
+                    th:value="${semester}" th:text="${semester}">
+            </option>
+        </select>
+    </label>
+    <button type="submit">save</button>
+</form>
 </body>
 </html>

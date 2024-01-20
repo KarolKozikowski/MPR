@@ -28,7 +28,8 @@ public class StudentPageController {
 
     @GetMapping("/edit/{studentId}")
     public String editStudent(Model model, @PathVariable UUID studentId){
-        model.addAttribute("student");
+        var student = studentService.getStudentById(studentId);
+        model.addAttribute("student", student);
         return "editStudent";
     }
 
@@ -73,5 +74,10 @@ public class StudentPageController {
         var Students = studentService.getStudentsByCzesne(studentDto.czesne());
         model.addAttribute("byCzesnePost", Students);
         return "byCzesne";
+    }
+    @PostMapping("/updateStudent")
+    public String updateStudent(@ModelAttribute StudentDto studentDto){
+        studentService.updateStudent(studentDto);
+        return "redirect:/students-page";
     }
 }

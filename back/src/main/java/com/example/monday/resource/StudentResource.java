@@ -34,7 +34,11 @@ public class StudentResource {
     public void saveStudents(@Validated @RequestBody CreateStudent createStudent) {
         studentService.saveStudent(createStudent);
     }
-
+    @PostMapping("/updateStudent")
+    @ResponseStatus(HttpStatus.IM_USED) // lol
+    public void updateStudent(@Validated @RequestBody StudentDto studentDto){
+        studentService.updateStudent(studentDto);
+    }
     //@PathVariable razem ze zmienną zawartą w ścieżce w formacie {nazwa_zmiennej} tworzą zmienną wartość url, którą odczytujemy bezpośrednio z adresu
     //Zwrócenie ResponseEntity<?> pozwala nam zmieniać dynamicznie parametry odpowiedzi w metodzie w zależności od wyniku działania aplikacji
     //możemy tu ustawić status ale też body, czy nagłówki. Jako ? podajemy informajcę jaki format powinno mieć body w przypadku poprawnej odpowiedzi.
