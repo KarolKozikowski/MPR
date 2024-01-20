@@ -34,8 +34,8 @@ public class StudentResource {
     public void saveStudents(@Validated @RequestBody CreateStudent createStudent) {
         studentService.saveStudent(createStudent);
     }
-    @PostMapping("/updateStudent")
-    @ResponseStatus(HttpStatus.IM_USED) // lol
+    @PutMapping("/updateStudent")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public void updateStudent(@Validated @RequestBody StudentDto studentDto){
         studentService.updateStudent(studentDto);
     }

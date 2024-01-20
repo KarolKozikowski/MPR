@@ -18,7 +18,8 @@ public class Student {
         this.semester = semester;
         this.czesne = czesne;
     }
-    public Student(String name, StudentUnit unit, Semester semester, Long czesne, Long index) {
+    public Student(String name, StudentUnit unit, Semester semester, Long czesne, Long index, UUID id) {
+        this.id = id;
         this.name = name;
         this.unit = unit;
         this.semester = semester;

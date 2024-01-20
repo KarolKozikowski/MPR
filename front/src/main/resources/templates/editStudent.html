@@ -7,7 +7,8 @@
 <body>
 <h2>Edit student: </h2>
 
-<form method="POST" th:action="@{updateStudent}" th:object="${student}">
+<form method="POST" th:action="@{/students-page/updateStudent}" th:object="${student}">
+    <input id="id-input" type="hidden" required th:field="*{id}"/>
     <label>
         Name:
         <input id="name-input" th:field="*{name}"/>
@@ -31,6 +32,10 @@
                     th:value="${semester}" th:text="${semester}">
             </option>
         </select>
+    </label>
+    <label>
+        Index:
+        <input id="index-input" type="number" required th:field="*{index}"/>
     </label>
     <button type="submit">save</button>
 </form>

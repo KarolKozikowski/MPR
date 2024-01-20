@@ -5,6 +5,7 @@ import com.example.monday.resource.Semester;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -54,11 +55,18 @@ public class StudentService {
                 .toBodilessEntity().block();
                 //.subscribe(entity ->log.info("Received status " + entity.getStatusCode()));
     }
-    public void updateStudent(StudentDto studentDto){
-        webClient.post()
-                .bodyValue(studentDto)
-                .retrieve()
-                .toBodilessEntity().block();
+    public void updateStudent(StudentDto studentDto) {
+        try {
+            HttpEntity<StudentDto> requestEntity = new HttpEntity<>(studentDto);
+
+            restTemplate.exchange(API_URL + "/updateStudent", HttpMethod.PUT, requestEntity,
+                            new ParameterizedTypeReference<StudentDto>() {})
+                    .getBody();
+        } catch (HttpClientErrorException e) {
+            throw new RecordNotFoundException("Just to check error handling");
+        } catch (HttpServerErrorException e) {
+            throw new RuntimeException();
+        }
     }
 
     public StudentDto getStudentById(UUID id) {

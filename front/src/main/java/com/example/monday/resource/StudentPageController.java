@@ -26,13 +26,6 @@ public class StudentPageController {
         return "index"; //z metod zawsze zwracamy Stringa i jako wartość wstawiamy nazwę szablonu thymeleafowego (pliku html)
     }
 
-    @GetMapping("/edit/{studentId}")
-    public String editStudent(Model model, @PathVariable UUID studentId){
-        var student = studentService.getStudentById(studentId);
-        model.addAttribute("student", student);
-        return "editStudent";
-    }
-
 
     @GetMapping("/add") // ustawiamy ścieżkę, do zwrócenia stron zawsze używamy metody GET, jest to standardowa metoda
     //jakiej używają przeglądarki do pobrania strony
@@ -74,6 +67,12 @@ public class StudentPageController {
         var Students = studentService.getStudentsByCzesne(studentDto.czesne());
         model.addAttribute("byCzesnePost", Students);
         return "byCzesne";
+    }
+    @GetMapping("/edit/{studentId}")
+    public String editStudent(Model model, @PathVariable UUID studentId){
+        var student = studentService.getStudentById(studentId);
+        model.addAttribute("student", student);
+        return "editStudent";
     }
     @PostMapping("/updateStudent")
     public String updateStudent(@ModelAttribute StudentDto studentDto){
