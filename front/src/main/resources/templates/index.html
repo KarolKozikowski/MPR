@@ -3,10 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Students</title>
-<!--    dołączenie pliku css do stylowania projektu, przez thymeleafowy znacznik
-wskazuje na to początek th: - pozostała część href mówi nam, że odnosimy się do referencji pliku
-zapis z @{} oznacza, że podajemy adres do rozwiązania przez thymeleaf w docelowym pliku html
-jaki zostanie zwrócony do klienta/użytkownika -->
     <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
@@ -21,7 +17,7 @@ jaki zostanie zwrócony do klienta/użytkownika -->
         <th>Czesne</th>
         <th>Semester</th>
         <th>Index</th>
-        <th>Action</th>
+<!--        <th>Action</th>-->
     </tr>
     <tr th:each="student : ${students}">
         <td th:text="${student.name}"></td>
@@ -29,7 +25,7 @@ jaki zostanie zwrócony do klienta/użytkownika -->
         <td th:text="${student.czesne}"></td>
         <td th:text="${student.semester}"></td>
         <td th:text="${student.index}"></td>
-        <td><a th:href="@{/students-page/edit/{studentId} (studentId=${student.id})}"><button type="button">edit</button></a></td>
+        <td><a th:href="@{/students-page/edit/{studentId} (studentId=${student.id})}"><img src="/img/edit.png" class="edit" alt="edit"></a></td>
     </tr>
 </table>
 <a th:href="@{/students-page/add}" class="add">+</a><br>
@@ -37,5 +33,9 @@ jaki zostanie zwrócony do klienta/użytkownika -->
 <a th:href="@{/students-page/byCzesne}" class="button2">search students by czesne</a><br>
 </div>
 </body>
-<footer th:insert="footer.html"></footer>
+<footer>
+    <p>kozikowski.karol03@gmail.com | s27092@pjwstk.edu.pl</p>
+    <br><p>+48 668 334 029</p>
+    <small>&copy 2023 - 2024 | Karol Kozikowski</small>
+</footer>
 </html>

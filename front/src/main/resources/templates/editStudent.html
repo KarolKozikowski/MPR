@@ -3,41 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit student</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
-<h2>Edit student: </h2>
-
+<div class="title2">
+    <h2>Edit Student</h2>
+</div>
+<div class="main">
 <form method="POST" th:action="@{/students-page/updateStudent}" th:object="${student}">
+    <table>
+        <tr>
+            <th>Name:</th>
+            <th>Czesne:</th>
+            <th>Unit:</th>
+            <th>Semester:</th>
+            <th>index:</th>
+        </tr>
+        <tr>
+            <td><input id="name-input" required th:field="*{name}"/></td>
+            <td><input id="czesne-input" type="number" required th:field="*{czesne}"/></td>
+            <td>
+                <select id="unit-input" name="unit" th:field="*{unit}">
+                    <option th:each="studentUnit : ${T(com.example.monday.resource.StudentUnit).values()}"
+                            th:value="${studentUnit}" th:text="${studentUnit}">
+                    </option>
+                </select>
+            </td>
+            <td>
+                <select id="semester-input" name="semester" th:field="*{semester}">
+                    <option th:each="semester : ${T(com.example.monday.resource.Semester).values()}"
+                            th:value="${semester}" th:text="${semester}">
+                    </option>
+                </select>
+            </td>
+            <td><input id="index-input" type="number" required th:field="*{index}"/></td>
+        </tr>
+    </table>
     <input id="id-input" type="hidden" required th:field="*{id}"/>
-    <label>
-        Name:
-        <input id="name-input" th:field="*{name}"/>
-    </label>
-    <label>
-        Czesne:
-        <input id="czesne-input" type="number" required th:field="*{czesne}"/>
-    </label>
-    <label>
-        Unit:
-        <select id="unit-input" name="unit" th:field="*{unit}">
-            <option th:each="studentUnit : ${T(com.example.monday.resource.StudentUnit).values()}"
-                    th:value="${studentUnit}" th:text="${studentUnit}">
-            </option>
-        </select>
-    </label>
-    <label>
-        Semester:
-        <select id="semester-input" name="semester" th:field="*{semester}">
-            <option th:each="semester : ${T(com.example.monday.resource.Semester).values()}"
-                    th:value="${semester}" th:text="${semester}">
-            </option>
-        </select>
-    </label>
-    <label>
-        Index:
-        <input id="index-input" type="number" required th:field="*{index}"/>
-    </label>
-    <button type="submit">save</button>
+    <button type="submit" class="save">save</button>
 </form>
+</div>
+<footer>
+    <p>kozikowski.karol03@gmail.com | s27092@pjwstk.edu.pl</p>
+    <br><p>+48 668 334 029</p>
+    <small>&copy 2023 - 2024 | Karol Kozikowski</small>
+</footer>
 </body>
 </html>

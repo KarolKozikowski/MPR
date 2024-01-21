@@ -22,24 +22,34 @@ body{
 }
 .main{
     background-color: var(--thevoid);
-    /*display: flex;*/
     position: absolute;
-    /*justify-content: center;*/
     left: 10vw;
     width: 80vw;
     top: 8vh;
-    height: 90vh;
+    height: 80vh;
     border: none;
     border-radius: 15px;
     box-shadow: 0 0 5px;
-    transition-property: box-shadow;
-    transition-duration: 400ms;
+    transition: box-shadow 400ms;
 }
+
 .main:hover{
     box-shadow: 0 0 10px;
 }
 .title{
     background: var(--main_blue);
+    position: absolute;
+    left: 2vw;
+    width: 96vw;
+    text-align: center;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    box-shadow: 0 0 5px;
+    transition-property: box-shadow;
+    transition-duration: 400ms;
+}
+.title2{
+    background: var(--greenish);
     position: absolute;
     left: 2vw;
     width: 96vw;
@@ -58,7 +68,18 @@ body{
     font-style: normal;
     cursor: default;
 }
+.title2 h2{
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: normal;
+    cursor: default;
+}
 .title:hover{
+    box-shadow: 1px 2px 10px;
+}
+.title2:hover{
     box-shadow: 1px 2px 10px;
 }
 table{
@@ -76,30 +97,31 @@ th{
     font-size: 15px;
     font-weight: 700;
     font-style: normal;
+    width: 15vw;
     padding: 7px;
     border-bottom: 2px solid var(--main_blue);
 }
 td{
     background-color: var(--main_blue_light);
     text-align: center;
-    color: aliceblue;
+    color: var(--thevoid);
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
     font-weight: 500;
     padding: 5px;
 }
 .add{
-    background-color: #5ca287;
+    background-color: #229b4c;
     color: white;
     text-decoration: none;
     text-align: center;
     padding: 3px 7px;
     border-radius: 50px;
-    margin-left: 77.5vw;
+    margin-left: 20px;
     transition: background-color 200ms;
 }
 .add:hover{
-    background-color: #4c836f;
+    background-color: #2b8035;
 }
 .button{
     position: absolute;
@@ -113,7 +135,8 @@ td{
     font-style: normal;
     padding: 7px 20px;
     border-radius: 20px;
-    margin-left: 20px;
+    border: none;
+    right: 20px;
     margin-top: -20px;
     transition: background-color 200ms;
 }
@@ -132,10 +155,100 @@ td{
     font-style: normal;
     padding: 7px 20px;
     border-radius: 20px;
-    margin-left: 300px;
+    border: none;
+    right: 270px;
     margin-top: -38px;
     transition: background-color 200ms;
 }
+.edit{
+    position: absolute;
+    margin-left: -256px;
+    margin-top: -256px;
+    scale: 4.5%;
+    opacity: 70%;
+    transition: opacity 200ms;
+}
+.edit:hover{
+    opacity: 1000%;
+}
 .button2:hover{
     background-color: #be911e;
+}
+footer{
+    background-color: var(--main_blue);
+    color: white;
+    position: absolute;
+    left: 2vw;
+    bottom: 0;
+    width: 96vw;
+    text-align: center;
+    border: none;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    font-style: normal;
+    cursor: default;
+    opacity: 70%;
+    transition: opacity 500ms 100ms;
+}
+footer:hover{
+    opacity: 100%;
+}
+footer p{
+    font-size: 14px;
+    font-weight: 400;
+    position: absolute;
+    text-align: left;
+    padding-left: 20px;
+}
+footer h3{
+    position: absolute;
+    text-align: left;
+    padding-left: 20px;
+}
+input{
+    background-color: var(--thevoid);
+    border: 2px solid var(--main_blue);
+    border-radius: 20px;
+    transition: border 200ms;
+    color: white;
+    text-align: center;
+}
+input:hover{
+    border: 2px solid #26ce35;
+}
+select{
+    background-color: var(--thevoid);
+    border: 2px solid var(--main_blue);
+    border-radius: 20px;
+    transition: border 200ms;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+select:hover{
+    border: 2px solid #26ce35;
+}
+.save{
+    position: absolute;
+    background-color: var(--greenish);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight:600;
+    font-style: normal;
+    padding: 7px 20px;
+    border-radius: 20px;
+    border: none;
+    right: 20px;
+    margin-top: -10px;
+    transition: background-color 200ms;
+    cursor: pointer;
+}
+.save:hover{
+    background-color: #437761;
 }
