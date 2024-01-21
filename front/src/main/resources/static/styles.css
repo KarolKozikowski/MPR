@@ -245,10 +245,65 @@ select:hover{
     border-radius: 20px;
     border: none;
     right: 20px;
-    margin-top: -10px;
     transition: background-color 200ms;
     cursor: pointer;
 }
 .save:hover{
+    background-color: #437761;
+}
+.search{
+    background-color: var(--main_blue_light);
+    position: absolute;
+    padding: 5px 10px;
+    border: 5px solid var(--main_blue);
+    border-radius: 25px;
+    color: var(--thevoid);
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight:700;
+    font-style: normal;
+    margin-left: 20px;
+}
+.search button{
+    position: absolute;
+    background-color: var(--greenish);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight:600;
+    font-style: normal;
+    padding: 7px 20px;
+    border-radius: 20px;
+    border: none;
+    margin-top: -5px;
+    margin-left: 25px;
+    cursor: pointer;
+    transition: background-color 200ms;
+}
+.search button:hover{
+    background-color: #437761;
+}
+.return{
+    position: absolute;
+    background-color: var(--greenish);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight:600;
+    font-style: normal;
+    padding: 7px 20px;
+    border-radius: 20px;
+    border: none;
+    left: 20px;
+    transition: background-color 200ms;
+    cursor: pointer;
+}
+.return:hover{
     background-color: #437761;
 }

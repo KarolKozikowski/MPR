@@ -6,16 +6,11 @@
     <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
-<form method="POST" th:action="@{/students-page/byCzesne}">
-    <label>
-        Czesne:
-        <input id="name-input" name="czesne"/>
-    </label><hr>
-    <button type="submit">Search</button>
-</form>
-<hr>
+<div class="title">
+    <h2>Search Students by Czesne</h2>
+</div>
+<div class="main">
 <table>
-    <thead>
     <tr>
         <th>Index</th>
         <th>Name</th>
@@ -23,17 +18,29 @@
         <th>Czesne</th>
         <th>Semester</th>
     </tr>
-    </thead>
-    <tbody>
     <tr th:each="student : ${byCzesnePost}">
-        <td th:text="${student.index}"></td>
+        <td th:text="'s'+${student.index}"></td>
         <td th:text="${student.name}"></td>
         <td th:text="${student.unit}"></td>
-        <td th:text="${student.czesne}"></td>
+        <td th:text="${student.czesne}+' zł'"></td>
         <td th:text="${student.semester}"></td>
     </tr>
-    </tbody>
-</table><hr>
-<a th:href="@{/students-page}">return</a>
+</table>
+<a th:href="@{/students-page}" class="save">return</a>
+<form method="POST" th:action="@{/students-page/byCzesne}">
+    <div class="search">
+    <label>
+        Czesne:
+        <input id="name-input" placeholder="search by czesne" name="czesne"/>
+    </label>
+    <button type="submit">Search</button>
+    </div>
+</form>
+</div>
+<footer>
+    <p>kozikowski.karol03@gmail.com | s27092@pjwstk.edu.pl</p>
+    <br><p>+48 668 334 029</p>
+    <small>&copy 2023 - 2024 | Karol Kozikowski</small>
+</footer>
 </body>
 </html>

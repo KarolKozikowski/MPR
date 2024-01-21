@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="title">
-    <h2>List of students</h2>
+    <h2>List of Students</h2>
 </div>
 <div class="main">
 <table>
@@ -22,9 +22,9 @@
     <tr th:each="student : ${students}">
         <td th:text="${student.name}"></td>
         <td th:text="${student.unit}"></td>
-        <td th:text="${student.czesne}"></td>
+        <td th:text="${student.czesne}+' zł'"></td>
         <td th:text="${student.semester}"></td>
-        <td th:text="${student.index}"></td>
+        <td th:text="'s'+${student.index}"></td>
         <td><a th:href="@{/students-page/edit/{studentId} (studentId=${student.id})}"><img src="/img/edit.png" class="edit" alt="edit"></a></td>
     </tr>
 </table>
