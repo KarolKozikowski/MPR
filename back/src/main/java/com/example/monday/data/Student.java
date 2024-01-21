@@ -8,11 +8,18 @@ import java.util.UUID;
 
 @Entity
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Student {
 
     public Student(String name, StudentUnit unit, Semester semester, Long czesne) {
+        this.name = name;
+        this.unit = unit;
+        this.semester = semester;
+        this.czesne = czesne;
+    }
+    public Student(String name, StudentUnit unit, Semester semester, Long czesne, Long index) {
         this.name = name;
         this.unit = unit;
         this.semester = semester;

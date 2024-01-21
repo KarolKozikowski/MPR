@@ -36,7 +36,7 @@ public class StudentService {
     }
     public void updateStudent(StudentDto studentDto){
         Student student = new Student(studentDto.name(), studentDto.unit(), studentDto.semester(), studentDto.czesne(), studentDto.index(), studentDto.id());
-        
+
         studentRepository.save(student);
     }
 

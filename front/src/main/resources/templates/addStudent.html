@@ -2,38 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dodaj studenta</title>
+    <title>add student</title>
 </head>
 <body>
-<!--używając standardowych znaczników html definiujemy metodę z jaką zostanie wywołane żądanie przy zatwierdzaniu formularza, metoda ta musi odpowiadać tej zdefiniowanej w kontrolerze
- akcję z kolei definujemy przy pomocy thymeleafowego znacznika th:action i konwencji @{} - do rozwiązania adresu żądania
- znacznik th:object jest definicją obiektu, z którego będziemy korzystać w naszym formularzu, pozwoli nam to odwoływać się do jego popertisów bezpośrednio, bez konieczności umieszczanie 'student.' przed nazwą propertisu
- nazwa obiektu w znaczniku th:object musi odpowiadać tej dodanej do modelu w kontrolerze-->
 <form method="POST" th:action="@{/students-page}" th:object="${student}">
     <label>
         Name:
-<!--        znacznik th:field pozwala nam pobrać wartość z tego inputu do pola name, zapis *{} jest odniesieniem do obiektu studenta zdefiniowanego w formularzu przez th:object-->
-        <input id="name-input" th:field="*{name}"/>
+        <input id="name-input" required th:field="*{name}"/>
     </label>
     <label>
         Czesne:
-        <input id="czesne-input" type="number" required th:field="*{czesne}"/>
+        <input id="czesne-input" name="czasne-input" type="number" placeholder="1570" required th:field="*{czesne}"/>
     </label>
     <label>
         Unit:
-        <select id="unit-input" name="unit" th:field="*{unit}">
-<!--            w znaczniku th:each pojawia się SpeL(Spring expression language), który pozwala nam odwołać się do klasy w naszym projekcie i wywołać na niej metodę values()-->
+        <select id="unit-input" name="unit" required th:field="*{unit}">
             <option th:each="studentUnit : ${T(com.example.monday.resource.StudentUnit).values()}"
                     th:value="${studentUnit}" th:text="${studentUnit}">
-<!--        w przypadku option mamy znacznik th:value, który odpowiada nam za przypisanie wartości do pola
- wartość ta będzie przekazana do naszego th:field po wybraniu opcji przez użytkownika -->
-
             </option>
         </select>
     </label>
     <label>
         Semester:
-        <select id="semester-input" name="semester" th:field="*{semester}">
+        <select id="semester-input" name="semester" required th:field="*{semester}">
             <option th:each="semester : ${T(com.example.monday.resource.Semester).values()}"
                     th:value="${semester}" th:text="${semester}">
             </option>
