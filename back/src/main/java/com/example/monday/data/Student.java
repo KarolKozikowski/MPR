@@ -24,6 +24,7 @@ public class Student {
         this.unit = unit;
         this.semester = semester;
         this.czesne = czesne;
+        this.index = index;
     }
     public Student(String name, StudentUnit unit, Semester semester, Long czesne, Long index, UUID id) {
         this.id = id;

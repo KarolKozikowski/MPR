@@ -109,6 +109,10 @@ td{
     font-size: 15px;
     font-weight: 500;
     padding: 5px;
+    transition: background-color 200ms;
+}
+tr:hover td{
+    background-color: #899cc0;
 }
 .add{
     background-color: #229b4c;
@@ -125,7 +129,7 @@ td{
 }
 .button{
     position: absolute;
-    background-color: goldenrod;
+    background-color: #7e6730;
     color: white;
     text-decoration: none;
     text-align: center;
@@ -141,11 +145,11 @@ td{
     transition: background-color 200ms;
 }
 .button:hover{
-    background-color: #be911e;
+    background-color: #9a7d38;
 }
 .button2{
     position: absolute;
-    background-color: goldenrod;
+    background-color: #7e6730;
     color: white;
     text-decoration: none;
     text-align: center;
@@ -169,10 +173,10 @@ td{
     transition: opacity 200ms;
 }
 .edit:hover{
-    opacity: 1000%;
+    opacity: 100%;
 }
 .button2:hover{
-    background-color: #be911e;
+    background-color: #9a7d38;
 }
 footer{
     background-color: var(--main_blue);

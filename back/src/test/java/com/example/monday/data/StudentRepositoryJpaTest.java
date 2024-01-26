@@ -1,5 +1,6 @@
 package com.example.monday.data;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ class StudentRepositoryJpaTest {
         var student2 = new Student("Aga", StudentUnit.WARSZAWA, Semester.I ,2250L, 25L);
         studentRepository.save(student1);
         studentRepository.save(student2);
+    }
+    @AfterEach
+    void cleanUp(){
+        studentRepository.deleteAll();
     }
 
     @Test
